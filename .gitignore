@@ -1,0 +1,10 @@
+#idea files
+onboard_statemachine/core/build
+onboard_statemachine/.gradle
+onboard_statemachine/.idea
+
+#vscode
+.vscode
+
+#temp files
+*~
