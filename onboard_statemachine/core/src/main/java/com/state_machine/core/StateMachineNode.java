@@ -24,6 +24,7 @@ public class StateMachineNode extends AbstractNodeMain {
     private ActionProvider actionProvider;
     private StateProvider stateProvider;
     private FileProvider fileProvider;
+    private Time timeStamp = new Time(0,0);
 
     @Override
     public GraphName getDefaultNodeName() {
@@ -37,7 +38,9 @@ public class StateMachineNode extends AbstractNodeMain {
         this.node = node;
         this.log = node.getLog();
         try {
-            Thread.sleep(10000); //forcing 5 seconds wait.
+
+
+            Thread.sleep(10000);
 
             RosServiceProvider serviceProvider = new RosServiceProvider(node);
             RosSubscriberProvider subscriberProvider = new RosSubscriberProvider(node);
@@ -56,14 +59,14 @@ public class StateMachineNode extends AbstractNodeMain {
                 throw new Exception("service not connected, please run mavros first");
             }
 
-            Time timeStamp = node.getCurrentTime();
+            timeStamp = node.getCurrentTime();
             while (!droneStateTracker.ready()){
                 if(node.getCurrentTime().subtract(timeStamp).compareTo(new Duration(20,0)) > 0){
                     throw new Exception("timeout");
                 }
                 Thread.sleep(1000);
             }
-            Thread.sleep(5000);
+            Thread.sleep(3000);
 
 
 
