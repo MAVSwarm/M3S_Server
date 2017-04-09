@@ -80,7 +80,7 @@ public abstract class State implements StateHandle {
             case Failure:
             case Inactive:
                 lastFailure = new Failure(ErrorType.ActionFailure, currentTime);
-            case Waiting:
+            case Running:
             default:
                 return false;
         }

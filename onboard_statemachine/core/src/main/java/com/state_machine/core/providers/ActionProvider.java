@@ -16,7 +16,7 @@ public class ActionProvider {
     private DisarmAction disarmAction;
     private PX4LandAction px4LandAction;
     private DecentralizedAction decentralizedAction;
-    private SimulinkAction simulinkAction;
+    private ExternalAction externalAction;
     private HoldAction holdAction;
     private RosServerProvider rosServerProvider;
     private Duration timeOut;
@@ -41,7 +41,7 @@ public class ActionProvider {
         disarmAction = new DisarmAction(serviceProvider.getArmingService(), stateTracker);
         px4LandAction = new PX4LandAction(stateTracker,timeOut,serviceProvider.getLandService());
         decentralizedAction = new DecentralizedAction(logger,stateTracker,neighborStateTracker,timeOut, rosParamProvider,rosPublisherProvider,serviceProvider);
-        simulinkAction = new SimulinkAction();
+        externalAction = new ExternalAction();
     }
 
     public ArmAction getArmAction(){ return armAction; }
@@ -64,7 +64,7 @@ public class ActionProvider {
 
     public DecentralizedAction getDecentralizedAction(){return decentralizedAction;}
 
-    public SimulinkAction getSimulinkAction(){return  simulinkAction;}
+    public ExternalAction getExternalAction(){return externalAction;}
 
     public HoldAction getHoldAction(int durationMs){
 

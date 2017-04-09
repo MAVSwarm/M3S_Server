@@ -46,7 +46,7 @@ public class SetFCUModeAction extends Action{
             };
             setModeService.call(request, listener);
 
-            status = ActionStatus.Waiting;
+            status = ActionStatus.Running;
             return status;
         }else{
             return status;

@@ -125,7 +125,7 @@ public class PX4FlyToAction extends Action {
             objective.getHeader().setSeq(seq);
             setpointPositionLocalPub.publish(objective);
             seq++;
-            status = ActionStatus.Waiting;
+            status = ActionStatus.Running;
             return status;
         }
     }

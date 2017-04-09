@@ -306,7 +306,7 @@ public class DecentralizedAction extends Action{
                 log.info("neighbor" + (i + 1) + " vel:" + neighborVelocities.elementAt(i)[0] + ", " + neighborVelocities.elementAt(i)[1] + ", " + neighborVelocities.elementAt(i)[2]);
             }
             */
-            return ActionStatus.Waiting;
+            return ActionStatus.Running;
         }
     }
 }

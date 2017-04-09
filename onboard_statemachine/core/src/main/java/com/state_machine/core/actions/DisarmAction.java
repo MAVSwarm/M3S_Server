@@ -45,8 +45,8 @@ public class DisarmAction extends Action {
             };
             armingService.call(message, listener);
 
-            status = ActionStatus.Waiting;
-            return ActionStatus.Waiting;
+            status = ActionStatus.Running;
+            return ActionStatus.Running;
         }
         else {
             return status;

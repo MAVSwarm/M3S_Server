@@ -78,7 +78,7 @@ public class PX4LandAction extends Action{
             status = ActionStatus.Failure;
             return status;
         }else{
-            status = ActionStatus.Waiting;
+            status = ActionStatus.Running;
             return status;
         }
     }

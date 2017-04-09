@@ -50,13 +50,9 @@ public class ArmAction extends Action {
                 armingService.call(message, listener);
 
                 stateTracker.setLocalOrigin(stateTracker.getVisionPosition());
-                //logger.warn("set local origin at "
-                //        + stateTracker.getLocalOrigin()[0] + ","
-                //        + stateTracker.getLocalOrigin()[1] + ","
-                //       + stateTracker.getLocalOrigin()[2] + ".");
 
-                status = ActionStatus.Waiting;
-                return ActionStatus.Waiting;
+                status = ActionStatus.Running;
+                return ActionStatus.Running;
         }
         else {
             return status;

@@ -98,7 +98,7 @@ public class HoldAction extends Action {
 
             setpointPositionLocalPub.publish(objective);
 
-            status = ActionStatus.Waiting;
+            status = ActionStatus.Running;
             return status;
         }
     }

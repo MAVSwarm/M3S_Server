@@ -92,7 +92,7 @@ public class PX4TakeoffAction extends Action{
             status = ActionStatus.Failure;
             return status;
         }else{
-            status = ActionStatus.Waiting;
+            status = ActionStatus.Running;
             //logger.warn("distance to target takeoff point:" + abs(stateTracker.getAltitude() - target_heightm));
             return status;
         }
