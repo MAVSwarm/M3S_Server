@@ -78,7 +78,6 @@ public abstract class State implements StateHandle {
             case ConnectionFailure:
                 lastFailure = new Failure(ErrorType.ConnectionFailure, currentTime);
             case Failure:
-            case Inactive:
                 lastFailure = new Failure(ErrorType.ActionFailure, currentTime);
             case Running:
             default:

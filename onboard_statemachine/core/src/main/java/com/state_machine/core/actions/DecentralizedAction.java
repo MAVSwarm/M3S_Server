@@ -132,7 +132,6 @@ public class DecentralizedAction extends Action{
 
     @Override
     public ActionStatus enterAction(Time time){
-        status = ActionStatus.Inactive;
         if(stateTracker.getDroneLanded() == DroneLanded.InAir) {
             updateParams();
             neighborStateTracker.UpdataNeighborList();
@@ -159,20 +158,19 @@ public class DecentralizedAction extends Action{
                 ServiceResponseListener<SetModeResponse> listener = new ServiceResponseListener<SetModeResponse>() {
                     @Override
                     public void onSuccess(SetModeResponse setModeResponse) {
-                        status = ActionStatus.Success;
+                        serviceResult = ActionStatus.Success;
                     }
 
                     @Override
                     public void onFailure(RemoteException e) {
-                        status = ActionStatus.Failure;
+                        serviceResult = ActionStatus.Failure;
                     }
                 };
                 setModeService.call(request, listener);
             }
 
             timeStamp = time;
-            status = ActionStatus.Inactive;
-            return ActionStatus.Success;
+            return serviceResult;
         }else{
             return ActionStatus.Failure;
         }
