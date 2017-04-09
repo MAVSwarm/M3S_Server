@@ -72,9 +72,6 @@ public class DecentralizedAction extends Action{
     private SimpleMatrix des_velocity;
     private int Ni;
 
-    /*  */
-    private Time lastNeighborUpdateTimestamp;
-
     public DecentralizedAction(Log log,
                                DroneStateTracker stateTracker,
                                NeighborStateTracker neighborStateTracker,
