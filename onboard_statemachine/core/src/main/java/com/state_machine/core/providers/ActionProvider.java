@@ -19,6 +19,7 @@ public class ActionProvider {
     private ExternalAction externalAction;
     private HoldAction holdAction;
     private RosServerProvider rosServerProvider;
+    private RosSubscriberProvider rosSubscriberProvider;
     private Duration timeOut;
     private Log logger;
 
@@ -30,7 +31,9 @@ public class ActionProvider {
             RosPublisherProvider rosPublisherProvider,
             Duration timeOut,
             RosServerProvider rosServerProvider,
-            RosParamProvider rosParamProvider){
+            RosParamProvider rosParamProvider,
+            RosSubscriberProvider rosSubscriberProvider){
+        this.rosSubscriberProvider = rosSubscriberProvider;
         this.serviceProvider = serviceProvider;
         this.stateTracker = stateTracker;
         this.rosPublisherProvider = rosPublisherProvider;
@@ -41,7 +44,6 @@ public class ActionProvider {
         disarmAction = new DisarmAction(serviceProvider.getArmingService(), stateTracker);
         px4LandAction = new PX4LandAction(stateTracker,timeOut,serviceProvider.getLandService());
         decentralizedAction = new DecentralizedAction(logger,stateTracker,neighborStateTracker,timeOut, rosParamProvider,rosPublisherProvider,serviceProvider);
-        externalAction = new ExternalAction();
     }
 
     public ArmAction getArmAction(){ return armAction; }
@@ -64,7 +66,9 @@ public class ActionProvider {
 
     public DecentralizedAction getDecentralizedAction(){return decentralizedAction;}
 
-    public ExternalAction getExternalAction(){return externalAction;}
+    public ExternalAction getExternalAction(int durationMs){
+        return new ExternalAction(rosPublisherProvider, rosSubscriberProvider, logger, stateTracker, serviceProvider, new Duration(durationMs/1000, (durationMs%1000)*1000000));
+    }
 
     public HoldAction getHoldAction(int durationMs){
 

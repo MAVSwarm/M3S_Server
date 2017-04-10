@@ -52,7 +52,7 @@ public class StateMachineNode extends AbstractNodeMain {
             droneStateTracker = new DroneStateTracker(
                     subscriberProvider, node);
             neighborStateTracker = new NeighborStateTracker(node, droneStateTracker);
-            actionProvider = new ActionProvider(log, serviceProvider, droneStateTracker, neighborStateTracker, publisherProvider,timeOut,serverProvider, rosParamProvider);
+            actionProvider = new ActionProvider(log, serviceProvider, droneStateTracker, neighborStateTracker, publisherProvider,timeOut,serverProvider, rosParamProvider, subscriberProvider);
             stateProvider = new StateProvider(actionProvider, serviceProvider, publisherProvider, log, droneStateTracker);
             fileProvider = new FileProvider(rosParamProvider,actionProvider, stateProvider, log);
             if(!serviceProvider.isConnected()) {
